@@ -1,16 +1,30 @@
 $(document).ready(function() {
   getGif();
-  
+  $('.fa-heart').click(goToFavorites)  
 });
 let database = firebase.database();
 let userID = window.location.search.match(/\?id=(.*)/)[1];
 
+
 function getGifInfo(event) {
+<<<<<<< HEAD
     
   let target = event.target;
   // if('pan right') {
     $(target).removeClass('currentGif').addClass('favorite');    
     saveFavorite(target.id, target.src);   
+=======
+  
+  
+  let target = event.target;
+  // if('pan right') {
+    $(target).removeClass('currentGif').addClass('favorite');
+    
+    
+    saveFavorite(target.id, target.src);
+    
+    
+>>>>>>> 81629faca9657cc185afbaeed4366ca07f1fb6f9
     
   // } else if('pan left') {
   //   $(target).removeClass('currentGif').addClass('removed');
@@ -49,4 +63,8 @@ function saveFavorite(gifID, gifURL) {
   return database.ref('users/' + userID + '/' + gifID).push({
     gif: gifURL 
   });
+}
+
+function goToFavorites() {
+  window.location = 'favorites.html?id=' + userID;
 }
