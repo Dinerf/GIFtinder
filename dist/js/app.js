@@ -23,13 +23,17 @@ function getGifInfo(event) {
   getGif();
 }
 
+function error(error) {
+  console.log(error);
+}
+
 function getGif() {
   const url = 'https://api.giphy.com/v1/gifs/search?q=cat&api_key=VE1DffjUQVOF0sO9GF1BXVfv0rrlMa4A&rating=pg'
   $.ajax({
     type: 'GET',
     url,
     success: showGif,
-    // error
+    error
   });
 }
 
