@@ -30,9 +30,7 @@ function clickSignIn(event) {
 function signIn(email, password) {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((response) => {
-      const userID = response.user.uid;
-      sendIdToLocalStorage(userID);
-      window.location = "main.html";
+      window.location = 'index.html?id=' + response.user.uid;      
     })
     .catch((error) => {
       handleErrors(error);
@@ -51,14 +49,12 @@ function clickSignUp(event) {
 function signUp(name, email, password) {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((response) => {
-      const userID = response.user.uid;
 
       database.ref("/users/" + userID).set({
         name: name
       });
 
-      sendIdToLocalStorage(userID);
-      window.location = "main.html";
+      window.location = 'index.html?id=' + response.user.uid;
     })
     .catch((error) => {
       handleErrors(error);
