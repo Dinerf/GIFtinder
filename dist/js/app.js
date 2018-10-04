@@ -7,6 +7,13 @@ let userID = window.location.search.match(/\?id=(.*)/)[1];
 
 
 function getGifInfo(event) {
+<<<<<<< HEAD
+    
+  let target = event.target;
+  // if('pan right') {
+    $(target).removeClass('currentGif').addClass('favorite');    
+    saveFavorite(target.id, target.src);   
+=======
   
   
   let target = event.target;
@@ -17,6 +24,7 @@ function getGifInfo(event) {
     saveFavorite(target.id, target.src);
     
     
+>>>>>>> 81629faca9657cc185afbaeed4366ca07f1fb6f9
     
   // } else if('pan left') {
   //   $(target).removeClass('currentGif').addClass('removed');
