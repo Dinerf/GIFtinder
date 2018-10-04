@@ -1,9 +1,20 @@
-window.onload = getFavorites();
+$(document).ready(function() {
+  getFavorites();
+});
+
+let database = firebase.database();
+let USER_ID = window.location.search.match(/\?id=(.*)/)[1];
 
 function getFavorites() {
-  // Pega favoritos do storage
+  var name;
 
-
+  database.ref('users/' + USER_ID).once('value')
+  .then(function(snapshot) {
+    
+    
+    name = snapshot.val();
+    console.log(name);
+  })
 
   
   // For each favorite executa função abaixo
