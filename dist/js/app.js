@@ -17,7 +17,7 @@ getGif();
 
 function getGif() {
   // Puxar gif da api
-  const url = "https://api.giphy.com/v1/gifs/search?q=cat&api_key=VE1DffjUQVOF0sO9GF1BXVfv0rrlMa4A&rating=pg"
+  const url = "https://api.giphy.com/v1/gifs/random?q=dog+cat&api_key=VE1DffjUQVOF0sO9GF1BXVfv0rrlMa4A&rating=pg&limit=10"
 
   $.ajax({
     type: "GET",
@@ -48,7 +48,7 @@ function error(error) {
 
 function showNewGif(gifID, gifURL) {
   $('main').append(`
-  <img class="currentGif" id="${gifID}" src="${gifURL}"/>
+  <img class="currentGif" id="${gifID}" src="${gifURL}" />
   `);
 }
 
