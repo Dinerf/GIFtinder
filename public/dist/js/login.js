@@ -30,7 +30,7 @@ function clickSignIn(event) {
 function signIn(email, password) {
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((response) => {
-      window.location = 'index.html?id=' + response.user.uid;      
+      window.location = 'index2.html?id=' + response.user.uid;      
     })
     .catch((error) => {
       handleErrors(error);
@@ -49,7 +49,7 @@ function clickSignUp(event) {
 function signUp(email, password) {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((response) => {
-      window.location = 'index.html?id=' + response.user.uid;
+      window.location = 'index.html2?id=' + response.user.uid;
     })
     .catch((error) => {
       handleErrors(error);
@@ -61,9 +61,4 @@ function handleErrors(error) {
   const errorCode = error.code;
   const errorMessage = error.message;
   console.log(errorCode, errorMessage);
-}
-
-// ENVIAR CHAVE
-function sendIdToLocalStorage(key) {
-  localStorage.setItem("userKey", key);
 }
