@@ -1,6 +1,6 @@
 $(document).ready(function() {
   getGif();
-  $('.fa-heart').click(goToFavorites)  
+  $('.fa-heart').click(goToFavorites);  
 });
 let database = firebase.database();
 let userID = window.location.search.match(/\?id=(.*)/)[1];
