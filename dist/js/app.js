@@ -1,20 +1,21 @@
 $(document).ready(function() {
   getGif();
-  
+  $('.fa-heart').click(goToFavorites)  
 });
 let database = firebase.database();
 let userID = window.location.search.match(/\?id=(.*)/)[1];
 
+
 function getGifInfo(event) {
-  console.log('lala');
+  
   
   let target = event.target;
   // if('pan right') {
     $(target).removeClass('currentGif').addClass('favorite');
-    console.log('amor');
+    
     
     saveFavorite(target.id, target.src);
-    console.log('love');
+    
     
     
   // } else if('pan left') {
@@ -54,4 +55,8 @@ function saveFavorite(gifID, gifURL) {
   return database.ref('users/' + userID + '/' + gifID).push({
     gif: gifURL 
   });
+}
+
+function goToFavorites() {
+  window.location = 'favorites.html?id=' + userID;
 }

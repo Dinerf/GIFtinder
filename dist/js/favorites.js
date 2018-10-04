@@ -19,9 +19,7 @@ function getFavorites() {
         .then(function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
           gifURL = childSnapshot.val();
-          showFavorites(gifURL, gifID);
-          console.log(gifURL, gifID);
-                 
+          showFavorites(gifURL, gifID);                 
         });
       });
       });
@@ -39,7 +37,7 @@ function getFavorites() {
 
 function showFavorites(gifURL, gifID) {
   $('#allFavorites').append(`
-  <video class="favorite" id="${gifID}" src="${gifURL}"></>
+  <img class="favorite" id="${gifID}" src="${gifURL}"/>
   `);
   // Abaixo, ao clicar, o gif aumenta e toma o tamanho da tela.
   $(gifID).click();
