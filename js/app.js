@@ -1,23 +1,36 @@
-window.onload = newGif;
-
-$('.currentGif').swipe((event) => {
-
-  let target = event.target;
-  
-  if(swipe right) {
-    $(target).removeClass('currentGif').addClass('favorite');
-    favorite();
-  } else if (swipe left) {
-    $(target).removeClass('currentGif').addClass('removed');
-  }
-
-  newGif();
+$(document).ready(function() {
+getGif();
 });
 
-function newGif() {
-  // Puxar gif da api, acrescentar classe 'currentGif' e mostrar na tela
+let userID = window.location.search.match(/\?id=(.*)/)[1];
+
+$('.currentGif').pan((event) => {
+  let target = event.target;
+  if('pan right') {
+    $(target).removeClass('currentGif').addClass('favorite');
+    saveFavorite(target.id, target.src);
+  } else if('pan left') {
+    $(target).removeClass('currentGif').addClass('removed');
+  }
+  getGif();
+});
+
+function getGif() {
+  // Puxar gif da api
+  
+  let gifID = ;
+  let gifURL = ;
+  showNewGif(gifID, gifURL);
 }
 
-function favorite() {
-  // Salvar o arquivo no storage
+function showNewGif(gifID, gifURL) {
+  $('#showGIF').append(`
+  <video class="currentGif" id="${gifID}" src="${gifURL}"></>
+  `);
+}
+
+function saveFavorite(gifID, gifURL) {
+  return database.ref('users/' + userID + '/' + gifID).push({
+    gif: gifURL
+  });
 }
