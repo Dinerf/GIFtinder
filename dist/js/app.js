@@ -29,7 +29,7 @@ function getGif() {
     type: 'GET',
     url,
     success: showGif,
-    // error
+    error
   });
 }
 
