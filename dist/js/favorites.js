@@ -3,23 +3,38 @@ $(document).ready(function() {
 });
 
 let database = firebase.database();
-let USER_ID = window.location.search.match(/\?id=(.*)/)[1];
+let userID = window.location.search.match(/\?id=(.*)/)[1];
 
 function getFavorites() {
-  var name;
-
-  database.ref('users/' + USER_ID).once('value')
+  database.ref('users/' + userID).once('value')
   .then(function(snapshot) {
-    
-    
-    name = snapshot.val();
-    console.log(name);
-  })
+    snapshot.forEach(function(childSnapshot) {
+      gifID = childSnapshot.key;
+      database.ref('users/' + userID + '/' + gifID).once('value')
+      .then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+        childKey = childSnapshot.key;
+        })
+        database.ref('users/' + userID + '/' + gifID + '/' + childKey).once('value')
+        .then(function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+          gifURL = childSnapshot.val();
+          showFavorites(gifURL, gifID);
+          console.log(gifURL, gifID);
+                 
+        });
+      });
+      });
+      });
+  });
 
   
+
+
+
   // For each favorite executa função abaixo
 
-  showFavorites(gifURL, gifID);
+  // showFavorites(gifURL, gifID);
 }
 
 function showFavorites(gifURL, gifID) {
