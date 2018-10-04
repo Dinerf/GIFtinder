@@ -17,7 +17,7 @@ getGif();
 
 function getGif() {
   // Puxar gif da api
-  const url = "https://api.giphy.com/v1/gifs/search?q=cat&api_key=VE1DffjUQVOF0sO9GF1BXVfv0rrlMa4A&limit=5"
+  const url = "https://api.giphy.com/v1/gifs/search?q=cat&api_key=VE1DffjUQVOF0sO9GF1BXVfv0rrlMa4A&rating=pg"
 
   $.ajax({
     type: "GET",
@@ -34,7 +34,7 @@ function getGif() {
 function showGif(data) {
   data.data.map((el) => {
     let gifID = el.id;
-    let gifURL = el.images.original_still.url;
+    let gifURL = el.images.original.url;
     console.log(gifID)
     console.log(gifURL)
     showNewGif(gifID, gifURL)
