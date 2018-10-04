@@ -58,7 +58,7 @@ function signUp(name, email, password) {
       });
 
       sendIdToLocalStorage(userID);
-      window.location = "screen1.html";
+      window.location = "main.html";
     })
     .catch((error) => {
       handleErrors(error);
