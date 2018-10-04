@@ -71,6 +71,15 @@ a:hover{
 	}
 }
 
-.fas, fa-heart{
+.fa-heart{
 color: #DC808A;
 }
+
+.menu{
+    text-align: right;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
+  }
