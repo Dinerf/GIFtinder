@@ -1,6 +1,6 @@
 // BANCO DE DADOS
 const database = firebase.database();
-const USER_ID = localStorage.getItem("userKey");
+// const USER_ID = localStorage.getItem("userKey");
 
 // if (USER_ID) {
 //   window.location = "screen1.html";
@@ -46,14 +46,9 @@ function clickSignUp(event) {
   signUp(name, email, password)
 };
 
-function signUp(name, email, password) {
+function signUp(email, password) {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((response) => {
-
-      database.ref("/users/" + userID).set({
-        name: name
-      });
-
       window.location = 'index.html?id=' + response.user.uid;
     })
     .catch((error) => {
