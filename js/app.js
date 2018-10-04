@@ -1,6 +1,4 @@
-$(document).ready(function() {
-getGif();
-});
+window.onload = getGif();
 
 let userID = window.location.search.match(/\?id=(.*)/)[1];
 
@@ -17,7 +15,7 @@ $('.currentGif').pan((event) => {
 
 function getGif() {
   // Puxar gif da api
-  
+
   let gifID = ;
   let gifURL = ;
   showNewGif(gifID, gifURL);
@@ -25,7 +23,7 @@ function getGif() {
 
 function showNewGif(gifID, gifURL) {
   $('#showGIF').append(`
-  <video class="currentGif" id="${gifID}" src="${gifURL}"></>
+  <video class="currentGif" id="${gifID}" src="${gifURL}"></video>
   `);
 }
 
