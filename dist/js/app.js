@@ -6,16 +6,11 @@ let database = firebase.database();
 let userID = window.location.search.match(/\?id=(.*)/)[1];
 
 function getGifInfo(event) {
-  console.log('lala');
-  
+    
   let target = event.target;
   // if('pan right') {
-    $(target).removeClass('currentGif').addClass('favorite');
-    console.log('amor');
-    
-    saveFavorite(target.id, target.src);
-    console.log('love');
-    
+    $(target).removeClass('currentGif').addClass('favorite');    
+    saveFavorite(target.id, target.src);   
     
   // } else if('pan left') {
   //   $(target).removeClass('currentGif').addClass('removed');
