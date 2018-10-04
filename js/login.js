@@ -12,12 +12,12 @@ $(document).ready(function() {
   // splash();
 });
 
-// TELA SPLASH
-function splash() {
-  $(".splash").delay(3000).fadeOut('slow');
-  $(".initial-page").hide();
-  $(".initial-page").delay(3000).fadeIn('slow');
-}
+// // TELA SPLASH
+// function splash() {
+//   $(".splash").delay(3000).fadeOut('slow');
+//   $(".initial-page").hide();
+//   $(".initial-page").delay(3000).fadeIn('slow');
+// }
 
 // ENTRAR
 function clickSignIn(event) {
