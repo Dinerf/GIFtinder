@@ -13,23 +13,42 @@ h1{
 	text-transform: uppercase;
 	text-align: center;
 	letter-spacing: 0.125em;
-    border-bottom: 0.063em solid rgba(0, 0, 0, 0.1);
+}
+
+.currentGif{
+	height: 100vh;
+}
+
+.menu{
+	border-bottom: 0.063em solid rgba(0, 0, 0, 0.1);
+}
+
+h2{
+	border-bottom: 0.063em solid rgba(0, 0, 0, 0.1);
+	font-size: 40px;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 0.125em;
 }
 
 p{
 	margin-bottom: 40px;
 }
 
-.site-header, .site-footer{
-	float: left;
-	width: 100%;
-}
-
-.site-footer .container{
-	border-top: 0.063em solid rgba(0, 0, 0, 0.1);
-    padding: 2.500em 0 1.250em;
-    padding-bottom: 0px;
+  .footer{
+	justify-content: space-around;
+	font-family: 'Montserrat', sans-serif;
 	text-align: center;
+	display: flex;
+	position: fixed;
+	color:  #524d46;
+	margin: 0;
+	font-size: 12px;
+	left: 0;
+	bottom: 0;
+	padding-top: 30px;
+	width: 100%;
+	border-top: 0.063em solid rgba(0, 0, 0, 0.1);  
 }
 
 .general{
@@ -37,11 +56,11 @@ p{
 }
 
 a {
-	color: #fe694c;
+	color: #9e9c9b;
 }
 
 a:hover{
-	color: #d62a09;
+	color: #643f38;
 }
 
 .site-navigation ul{
@@ -81,5 +100,5 @@ color: #DC808A;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 30px;
+	font-size: 30px;
   }
