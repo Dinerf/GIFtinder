@@ -1,59 +1,53 @@
 $(document).ready(function() {
-getGif();
+  getGif();
+  
 });
+let database = firebase.database();
+let userID = window.location.search.match(/\?id=(.*)/)[1];
 
-// let userID = window.location.search.match(/\?id=(.*)/)[1];
-
-// $('.currentGif').pan((event) => {
-//   let target = event.target;
-//   if('pan right') {
-//     $(target).removeClass('currentGif').addClass('favorite');
-//     saveFavorite(target.id, target.src);
-//   } else if('pan left') {
-//     $(target).removeClass('currentGif').addClass('removed');
-//   }
-//   getGif();
-// });
+function getGifInfo(event) {
+  console.log('lala');
+  
+  let target = event.target;
+  // if('pan right') {
+    $(target).removeClass('currentGif').addClass('favorite');
+    console.log('amor');
+    
+    saveFavorite(target.id, target.src);
+    console.log('love');
+    
+    
+  // } else if('pan left') {
+  //   $(target).removeClass('currentGif').addClass('removed');
+  // }
+  getGif();
+}
 
 function getGif() {
-  // Puxar gif da api
-  const url = "https://api.giphy.com/v1/gifs/random?q=dog+cat&api_key=VE1DffjUQVOF0sO9GF1BXVfv0rrlMa4A&rating=pg&limit=10"
-
+  const url = 'https://api.giphy.com/v1/gifs/search?q=cat&api_key=VE1DffjUQVOF0sO9GF1BXVfv0rrlMa4A&rating=pg'
   $.ajax({
-    type: "GET",
+    type: 'GET',
     url,
     success: showGif,
-    error
-  })
-  
-  // let gifID = ;
-  // let gifURL = ;
-  // showNewGif(gifID, gifURL);
+    // error
+  });
 }
 
 function showGif(data) {
   data.data.map((el) => {
-    let gifID = el.id;
-    let gifURL = el.images.original.url;
-    console.log(gifID)
-    console.log(gifURL)
-    showNewGif(gifID, gifURL)
-    // $("main").append(`<p>oi</p>`)
+    showNewGif(el.id, el.images.original.url)
   })
 }
 
-function error(error) {
-  console.log(error);
-}
-
 function showNewGif(gifID, gifURL) {
-  $('main').append(`
-  <img class="currentGif" id="${gifID}" src="${gifURL}" />
+  $('main').html(`
+  <img class="currentGif" id="${gifID}" src="${gifURL}"/>
   `);
+  $('.currentGif').click(getGifInfo);
 }
 
 function saveFavorite(gifID, gifURL) {
   return database.ref('users/' + userID + '/' + gifID).push({
-    gif: gifURL
+    gif: gifURL 
   });
 }
