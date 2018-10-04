@@ -1,4 +1,4 @@
-window.onload = newGif;
+window.onload = newGif();
 
 $('.currentGif').swipe((event) => {
 
@@ -6,7 +6,7 @@ $('.currentGif').swipe((event) => {
   
   if(swipe right) {
     $(target).removeClass('currentGif').addClass('favorite');
-    favorite();
+    saveFavorite(gifURL);
   } else if (swipe left) {
     $(target).removeClass('currentGif').addClass('removed');
   }
@@ -18,6 +18,8 @@ function newGif() {
   // Puxar gif da api, acrescentar classe 'currentGif' e mostrar na tela
 }
 
-function favorite() {
-  // Salvar o arquivo no storage
+function saveFavorite(gifURL) {
+  return database.ref('users/' + userID + '/gifs/').push({
+    gif: gifURL
+  });
 }
